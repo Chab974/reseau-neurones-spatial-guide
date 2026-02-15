@@ -161,6 +161,152 @@
         }
         .symbol-item strong { color: #38bdf8; }
 
+        /* VULGARISATION */
+        .vulgarization-section {
+            margin: 22px 0 18px 0;
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 20px;
+        }
+        .vulg-header {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .vulg-header h2 {
+            margin: 0;
+            color: #7dd3fc;
+            font-size: 1.6rem;
+        }
+        .vulg-header p {
+            margin: 8px 0 0 0;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+        .vulg-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .vulg-step-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 12px;
+            transition: all 0.25s ease;
+        }
+        .vulg-step-title {
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+        .vulg-step-card p {
+            margin: 0;
+            color: #cbd5e1;
+            font-size: 0.85rem;
+            line-height: 1.35;
+        }
+        .vulg-step-card.active {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.28), 0 8px 22px rgba(56, 189, 248, 0.22);
+            transform: translateY(-1px);
+            background: rgba(14, 116, 144, 0.2);
+        }
+
+        .vulg-flow {
+            background: rgba(30, 41, 59, 0.45);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+        .vulg-flow-track {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .vulg-node {
+            flex: 1;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid #475569;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+        .vulg-node strong {
+            color: #e2e8f0;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.85rem;
+        }
+        .vulg-node span {
+            color: #94a3b8;
+            font-size: 0.78rem;
+            line-height: 1.2;
+            display: block;
+        }
+        .vulg-arrow {
+            align-self: center;
+            color: #38bdf8;
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+
+        .vulg-bottom {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 12px;
+        }
+        .vulg-messages, .vulg-glossary {
+            background: rgba(30, 41, 59, 0.45);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 12px;
+        }
+        .vulg-messages h3, .vulg-glossary h3 {
+            margin: 0 0 8px 0;
+            color: #7dd3fc;
+            font-size: 0.95rem;
+        }
+        .vulg-messages ul, .vulg-glossary ul {
+            margin: 0;
+            padding-left: 18px;
+            color: #cbd5e1;
+        }
+        .vulg-messages li, .vulg-glossary li {
+            margin-bottom: 6px;
+            font-size: 0.82rem;
+            line-height: 1.35;
+        }
+        .vulg-glossary strong {
+            color: #e2e8f0;
+        }
+
+        @media (max-width: 1100px) {
+            .vulg-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .vulg-bottom {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 860px) {
+            .vulg-flow-track {
+                flex-direction: column;
+            }
+            .vulg-arrow {
+                transform: rotate(90deg);
+            }
+        }
+        @media (max-width: 620px) {
+            .vulg-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .input-methods {
             display: flex;
             justify-content: center;
@@ -343,6 +489,65 @@
             <div class="symbol-item"><strong>C</strong> = Courbe</div>
         </div>
 
+        <section id="vulgarizationSection" class="vulgarization-section" aria-labelledby="vulg-title">
+            <div class="vulg-header">
+                <h2 id="vulg-title">Comprendre en 2 minutes</h2>
+                <p>Comment ce mini-réseau apprend à lire votre chiffre</p>
+            </div>
+
+            <div class="vulg-grid">
+                <article class="vulg-step-card vulg-stage active" data-stage="train">
+                    <div class="vulg-step-title">1) Entraîner</div>
+                    <p>Le modèle apprend sur des exemples synthétiques pour ajuster ses connexions.</p>
+                </article>
+                <article class="vulg-step-card vulg-stage" data-stage="draw">
+                    <div class="vulg-step-title">2) Dessiner</div>
+                    <p>Votre trait est converti en 10 caractéristiques visuelles mesurées.</p>
+                </article>
+                <article class="vulg-step-card vulg-stage" data-stage="predict">
+                    <div class="vulg-step-title">3) Prédire</div>
+                    <p>Le réseau calcule un score de confiance pour chaque chiffre (0 à 9).</p>
+                </article>
+                <article class="vulg-step-card vulg-stage" data-stage="correct">
+                    <div class="vulg-step-title">4) Corriger</div>
+                    <p>Votre validation/correction sert de feedback pour améliorer le modèle.</p>
+                </article>
+            </div>
+
+            <div class="vulg-flow">
+                <div class="vulg-flow-track">
+                    <div class="vulg-node"><strong>Dessin</strong><span>Trait sur le canvas</span></div>
+                    <div class="vulg-arrow">➜</div>
+                    <div class="vulg-node"><strong>Caractéristiques</strong><span>Lignes, courbes, boucles</span></div>
+                    <div class="vulg-arrow">➜</div>
+                    <div class="vulg-node"><strong>Réseau</strong><span>Calcul des activations</span></div>
+                    <div class="vulg-arrow">➜</div>
+                    <div class="vulg-node"><strong>Probabilités</strong><span>Confiance par chiffre</span></div>
+                    <div class="vulg-arrow">➜</div>
+                    <div class="vulg-node"><strong>Correction humaine</strong><span>Renforcement ciblé</span></div>
+                </div>
+            </div>
+
+            <div class="vulg-bottom">
+                <div class="vulg-messages">
+                    <h3>Message central</h3>
+                    <ul>
+                        <li>L'IA ne voit pas un chiffre comme vous. Elle mesure des indices.</li>
+                        <li>Elle n'est pas figée : elle s'améliore quand vous la corrigez.</li>
+                        <li>Une prédiction forte peut être fausse : l'humain garde la décision.</li>
+                    </ul>
+                </div>
+                <div class="vulg-glossary">
+                    <h3>Mots à connaître</h3>
+                    <ul>
+                        <li><strong>Feature</strong> : indice visuel mesuré (ligne, courbe, boucle).</li>
+                        <li><strong>Entraînement</strong> : ajustement des poids pour réduire l'erreur.</li>
+                        <li><strong>Confiance</strong> : score de certitude, pas une garantie de vérité.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
         <div class="input-methods">
             <div class="method-card" style="position:relative;">
                 <h3>✍️ Zone de Dessin Libre</h3>
@@ -433,6 +638,7 @@
         let trainingDataset = []; 
         let isModelTrained = false;
         let helpEnabled = true;
+        let learningStage = 'train';
 
         const sigmoid = x => 1 / (1 + Math.exp(-x));
         const dSigmoid = y => y * (1 - y);
@@ -442,6 +648,14 @@
             helpEnabled = document.getElementById('helpToggle').checked;
             if(!helpEnabled) hideAllBubbles();
             else showBubbleStep(getCurrentStep());
+        }
+
+        function setLearningStage(stage) {
+            learningStage = stage;
+            document.querySelectorAll('.vulg-stage').forEach(el => {
+                if (el.dataset.stage === stage) el.classList.add('active');
+                else el.classList.remove('active');
+            });
         }
 
         function hideAllBubbles() {
@@ -592,6 +806,7 @@
             clearActivations();
             document.getElementById('resultBox').style.display = 'none';
             document.getElementById('currentInputInfo').textContent = "En attente de dessin...";
+            setLearningStage(isModelTrained ? 'draw' : 'train');
             showBubbleStep(2); 
         }
 
@@ -614,6 +829,7 @@
         }
 
         function analyzeDrawing() {
+            setLearningStage('draw');
             let H_T=0, H_M=0, H_B=0;
             let V=0, D=0, L=0;
             let C_T=0, C_B=0;
@@ -830,6 +1046,7 @@
             drawSynapses();
             updateLabels();
             document.getElementById('resultBox').style.display = 'none';
+            setLearningStage('train');
             
             setTimeout(() => showBubbleStep(1), 500);
         }
@@ -1023,16 +1240,19 @@
             </div>`;
 
             document.getElementById('trainBtn').disabled = false;
+            setLearningStage('predict');
             showBubbleStep(4);
         }
 
         // NOUVEAU : Renforcer le succès
         function reinforceSuccess(digit) {
+            setLearningStage('correct');
             trainingDataset.push({ X: [...currentInputValues], targetDigit: digit });
             startBatchTraining(true);
         }
 
         function teachSpecificCase() {
+            setLearningStage('correct');
             const correctDigit = parseInt(document.getElementById('correctionSelect').value);
             trainingDataset.push({ X: [...currentInputValues], targetDigit: correctDigit });
             startBatchTraining(true);
@@ -1040,6 +1260,7 @@
 
         async function startBatchTraining(isQuickFix = false) {
             isTraining = true;
+            setLearningStage(isQuickFix ? 'correct' : 'train');
             hideAllBubbles();
             document.querySelectorAll('.btn-draw').forEach(b => b.disabled = true);
             document.getElementById('trainBtn').disabled = true;
@@ -1175,6 +1396,7 @@
         window.onload = () => { 
             initDOM(); 
             resetNetwork();
+            setLearningStage('train');
         };
     </script>
     <script src="https://chab974.github.io/site-principal/menu/menu.js" defer></script>
